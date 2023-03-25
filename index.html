@@ -22,51 +22,57 @@
          <button id="fullscreen-btn">Full <br> Screen</button>
          <p id="winner"></p>
         </div>
-        <img src="./Image_reference/Jellyfish.png" alt="Jellyfish" style="width: 5rem; height: 10rem;">
+        <img src="./Image_reference/earth.png" alt="Earth" style="width: 20rem; height: 20rem;">
+        <!-- <img src="./Image_reference/Jellyfish.png" alt="Jellyfish" style="width: 20rem; height: 20rem;"> -->
         <button id="reset-btn">Restart</button>
        </div>
    
    <div class="input-box">
-     <input id="input" type="text">
+     <input id="input" readonly="" type="text" maxlength="12">
      <button id="play-btn">►</button>
    </div>
 
    <div id="keyboard">
     <div class="row">
-      <div class="key">A</div>
-      <div class="key">B</div>
-      <div class="key">C</div>
-      <div class="key">D</div>
-      <div class="key">E</div>
-      <div class="key">F</div>
-      <div class="key">G</div>
-      <div class="key">H</div>
-      <div class="key">I</div>
-      <div class="key">J</div>
-      <div class="key">K</div>
-      <div class="key">L</div>
-      <div class="key">M</div>
-     </div>
-    <div class="row">
-      <div class="key">N</div>
-      <div class="key">O</div>
-      <div class="key">P</div>
-      <div class="key">Q</div>
-      <div class="key">R</div>
-      <div class="key">S</div>
-      <div class="key">T</div>
-      <div class="key">U</div>
-      <div class="key">V</div>
-      <div class="key">W</div>
-      <div class="key">X</div>
-      <div class="key">Y</div>
-      <div class="key">Z</div>
+      <button class="key">A</button>
+      <button class="key">B</button>
+      <button class="key">C</button>
+      <button class="key">D</button>
+      <button class="key">E</button>
+      <button class="key">F</button>
+      <button class="key">G</button>
+      <button class="key">H</button>
+      <button class="key">I</button>
+      <button class="key">J</button>
+      <button class="key">K</button>
+      <button class="key">L</button>
+      <button class="key">M</button>
     </div>
+    <div class="row">
+      <button class="key">N</button>
+      <button class="key">O</button>
+      <button class="key">P</button>
+      <button class="key">Q</button>
+      <button class="key">R</button>
+      <button class="key">S</button>
+      <button class="key">T</button>
+      <button class="key">U</button>
+      <button class="key">V</button>
+      <button class="key">W</button>
+      <button class="key">X</button>
+      <button class="key">Y</button>
+      <button class="key">Z</button>
+    </div>
+  </div>
+  
   </div>
   </div>
 
  </div>
- <audio id="my-Sound" src="./Sound bites/pickupCoin.wav"></audio>
- <script src="./script.js"></script>
+<audio id="my-Sound">
+ <source src="./Sound-bites/earth.wav" type="audio/wav">
+ <source src="./Sound-bites/jellyfish.wav" type="audio/wav">
+</audio>
+  <script src="./script.js"></script>
 </body>
 </html>
