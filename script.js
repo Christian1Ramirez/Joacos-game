@@ -1,7 +1,7 @@
 //fullscreen button
-let fullscreenBtn = document.getElementById("fullscreen-btn");
+let fullScreenBtn = document.getElementById("fullscreen-btn");
 
-fullscreenBtn.addEventListener("click", function () {
+fullScreenBtn.addEventListener("click", function () {
   let docElm = document.documentElement;
   if (docElm.requestFullscreen) {
     docElm.requestFullscreen();
@@ -15,14 +15,25 @@ fullscreenBtn.addEventListener("click", function () {
 });
 
 //reset button & action(figure out)
-let resetBtn = document.getElementById('reset-Btn');
-const scoreDisplay = document.getElementById('scoreDisplay'); 
+// let resetBtn = document.getElementById('reset-Btn');
+// const scoreDisplay = document.getElementById('scoreDisplay');
 
-let score = 0;
+// let score = 0;
 
-resetBtn.addEventListener('click', function() {
-  score = 0; 
-  scoreDisplay.textContent = score; 
+// resetBtn.addEventListener('click', function() {
+//   score = 0;
+//   scoreDisplay.textContent = score;
+// });
+
+//play button(fix)
+const playBtn = document.getElementById("play-btn");
+const mySound = document.getElementById("my-Sound");
+const pixName = ["jellyfish", "venus", "seahorse", "whale", "sun", "rocket"];
+
+playBtn.addEventListener("click", function () {
+  if (mySound.paused) {
+    mySound.play();
+  } else {
+    mySound.pause();
+  }
 });
-
-

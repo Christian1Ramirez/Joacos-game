@@ -1,13 +1,12 @@
 #body {
  display: grid;
  grid-template-columns: 1fr 5fr;
- /* justify-content: space-between;
- flex-direction: column;
- text-align: center; */
+ overflow: hidden;
 }
 
 .rocket {
  height: 40rem;
+ margin-top: -10rem;
 }
 
 #fusDiv {
@@ -19,5 +18,59 @@
 }
 
 #top-box {
+ display: flex;
+ justify-content: space-evenly;
+}
+
+#fullscreen-btn {
+ height: 4rem;
+ border-radius: 10px;
+}
+
+#reset-btn {
+ height: 4rem;
+ border-radius: 10px;
+}
+
+.input-box {
+ display: grid;
+ margin: 5px 7vw 5px 1vw;
+ border-radius: 10px;
+ grid-template-columns: 6fr 1fr;
+}
+
+#input {
 
 }
+
+#play-btn {
+ border-radius: 5px;
+ height: 5rem;
+ min-width: 12rem
+}
+
+#keyboard {
+ display: flex;
+ flex-direction: column;
+}
+
+.row {
+ display: flex;
+ justify-content: center;
+}
+
+.key {
+ justify-content: center;
+ width: 8rem;
+ height: 5rem;
+ margin: 3px;
+ border: 1px solid black;
+ border-radius: 3px;
+ text-align: center;
+ display: flex;
+ align-items: center;
+ line-height: 40px;
+ font-size: 2rem;
+}
+
+
