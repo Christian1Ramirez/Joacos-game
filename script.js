@@ -79,14 +79,23 @@ keys.forEach(function(key) {
 
 
 
-//play button(fix)
+//play button
+let soundArray = [
+ 'Sound-bites/earth.wav',
+ 'Sound-bites/saturn.wav',
+ 'Sound-bites/mars.wav',
+ 'Sound-bites/uranus.wav'
+];
+
 const playBtn = document.getElementById("play-btn");
 const mySound = document.getElementById("my-Sound");
 
 playBtn.addEventListener("click", function () {
-  if (mySound.paused) {
-    mySound.play();
-  } else {
-    mySound.pause();
-  }
+ if (mySound.paused) {
+   mySound.src = soundArray[currentImageIndex];
+   mySound.play();
+ } else {
+   mySound.pause();
+ }
 });
+
