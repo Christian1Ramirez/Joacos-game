@@ -2,6 +2,8 @@
  display: grid;
  grid-template-columns: 1fr 5fr;
  overflow: hidden;
+ background-image: url("./Image_reference/space.png");
+ background-size: cover;
 }
 
 .rocket {
@@ -32,6 +34,7 @@
  border-radius: 10px;
 }
 
+
 .input-box {
  display: grid;
  margin: 5px 7vw 5px 1vw;
@@ -39,9 +42,9 @@
  grid-template-columns: 6fr 1fr;
 }
 
-#input {
+/* #input {
 
-}
+} */
 
 #play-btn {
  border-radius: 5px;
