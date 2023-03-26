@@ -14,24 +14,26 @@ fullScreenBtn.addEventListener("click", function () {
  }
 });
 
-//reset button & action
-// let resetBtn = document.getElementById("reset-btn");
-// let scoreDisplay = document.getElementById("scoreDisplay");
-// let progressBar = document.getElementById("progress-bar");
+// reset button & action
+let resetBtn = document.getElementById("reset-btn");
+let scoreDisplay = document.getElementById("scoreDisplay");
+let progressBar = document.getElementById("progress-bar");
 
-// let score = 0;
+let score = 0;
 
-// resetBtn.addEventListener("click", function () {
-//  score = 0;
-//  scoreDisplay.textContent = score;
-//  progressBar.style.width = "0%";
-// });
+resetBtn.addEventListener("click", function () {
+ score = 0;
+ scoreDisplay.textContent = score;
+ progressBar.style.width = "0%";
+});
 
 
 //IMAGE DISPLAYED
-const imageArray = [
+let imageArray = [
  'Image_reference/earth.png',
- 'Image_reference/saturn.png'
+ 'Image_reference/saturn.png',
+ 'Image_reference/mars.png',
+ 'Image_reference/uranus.png'
 ];
 
 let currentImageIndex = 0;
@@ -43,27 +45,28 @@ document.getElementById('image-array').appendChild(currentImage);
 
 let keys = document.querySelectorAll('.key');
 let input = document.getElementById('input');
-let earthLetters = 'EARTH';
+let planetLetters = ['EARTH', 'SATURN', 'MARS', 'URANUS'];
 let currentIndex = 0;
 
 keys.forEach(function(key) {
-key.addEventListener('click', function() {
- let letter = key.textContent;
- 
- if (letter === earthLetters[currentIndex]) {
-  input.value += letter;
-  currentIndex++;
+ key.addEventListener('click', function() {
+   let letter = key.textContent;
 
-  if (currentIndex === earthLetters.length) {
-    currentIndex = 0;
-    currentImageIndex = (currentImageIndex + 1) % imageArray.length;
-    currentImage.src = imageArray[currentImageIndex];
-  }
- } else {
-   input.value = '';
-   currentIndex = 0;
- }
-});
+   if (letter === planetLetters[currentImageIndex][currentIndex]) {
+     input.value += letter;
+     currentIndex++;
+
+     if (currentIndex === planetLetters[currentImageIndex].length) {
+       currentIndex = 0;
+       input.value = '';
+       currentImageIndex = (currentImageIndex + 1) % imageArray.length;
+       currentImage.src = imageArray[currentImageIndex];
+     }
+   } else {
+     input.value = '';
+     currentIndex = 0;
+   }
+ });
 });
 
 //play button(fix)
