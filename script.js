@@ -44,23 +44,31 @@ currentImage.style.height = '20rem';
 document.getElementById('image-array').appendChild(currentImage);
 
 let keys = document.querySelectorAll('.key');
-let input = document.getElementById('input');
-let planetLetters = ['EARTH', 'SATURN', 'MARS', 'URANUS'];
+let input = document.getElementById('input-bar');
+let planetWords = ['EARTH', 'SATURN', 'MARS', 'URANUS'];
 let currentIndex = 0;
 
 keys.forEach(function(key) {
  key.addEventListener('click', function() {
    let letter = key.textContent;
+   let word = planetWords[currentImageIndex];
 
-   if (letter === planetLetters[currentImageIndex][currentIndex]) {
+   if (letter === word[currentIndex]) {
      input.value += letter;
      currentIndex++;
 
-     if (currentIndex === planetLetters[currentImageIndex].length) {
+     if (currentIndex === word.length) {
+       input.value = word;
        currentIndex = 0;
-       input.value = '';
-       currentImageIndex = (currentImageIndex + 1) % imageArray.length;
-       currentImage.src = imageArray[currentImageIndex];
+       setTimeout(function() {
+         document.getElementById('correct-msg').textContent = 'CORRECT!';
+         setTimeout(function() {
+           currentImageIndex = (currentImageIndex + 1) % imageArray.length;
+           currentImage.src = imageArray[currentImageIndex];
+           document.getElementById('correct-msg').textContent = '';
+           input.value = ''; 
+         }, 2000);
+       }, 0);
      }
    } else {
      input.value = '';
@@ -68,6 +76,8 @@ keys.forEach(function(key) {
    }
  });
 });
+
+
 
 //play button(fix)
 const playBtn = document.getElementById("play-btn");

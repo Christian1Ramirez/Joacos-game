@@ -29,6 +29,12 @@
  border-radius: 10px;
 }
 
+#correct-msg {
+ font-weight: bold;
+ display: block;
+ color: white;
+}
+
 #reset-btn {
  height: 4rem;
  border-radius: 10px;
