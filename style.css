@@ -51,6 +51,7 @@
 
 #input-bar {
  border-radius: 3rem;
+ font-size: 50PX;
 }
 
 #play-btn {
@@ -68,6 +69,7 @@
  display: flex;
  justify-content: center;
 }
+
 
 .key {
  justify-content: center;
@@ -146,6 +148,45 @@ button:active {
  box-shadow: none;
 }
 
+@keyframes zoomIn {
+ from {
+   transform: scale(1);
+ }
+ to {
+   transform: scale(1.2);
+ }
+}
 
+#letterBlink {
+ text-decoration: blink;
+ color: red;
+ -webkit-text-stroke: 1px;
+ -webkit-text-stroke-color: currentcolor;
+ -webkit-text-stroke-color: #000;
+ font-weight: 800;
+ background-color: sandybrown;
+ animation-name: blinker, zoomIn;
+ animation-duration: 0.6s;
+ animation-iteration-count: infinite;
+ animation-timing-function: ease-in-out;
+ animation-direction: alternate;
+}
 
+@keyframes shake {
+ 0%, 100% {
+   transform: translate3d(0, 0, 0);
+ }
+ 10%, 30%, 50%, 70%, 90% {
+   transform: translate3d(-5px, 0, 0);
+ }
+ 20%, 40%, 60%, 80% {
+   transform: translate3d(5px, 0, 0);
+ }
+}
+
+#shake {
+ animation-name: shake;
+ animation-duration: 0.7s;
+ background-color: firebrick;
+}
 

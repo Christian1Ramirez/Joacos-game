@@ -94,7 +94,12 @@ keys.forEach(function (key) {
           }, 2700);
         }, 0);
       }
-    } 
+     } else {
+      key.setAttribute("id", "shake");
+      setTimeout(function () {
+        key.setAttribute("id", "");
+      }, 700);
+    }
   });
 });
 
