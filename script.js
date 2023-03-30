@@ -38,8 +38,8 @@ let imageArray = [
 let currentImageIndex = 0;
 let currentImage = document.createElement("img");
 currentImage.src = imageArray[currentImageIndex];
-currentImage.style.width = "22rem";
-currentImage.style.height = "20rem";
+currentImage.style.width = "25rem";
+currentImage.style.height = "25rem";
 document.getElementById("image-array").appendChild(currentImage);
 
 //words typed
@@ -62,11 +62,15 @@ keys.forEach(function (key) {
         input.value = word;
         currentIndex = 0;
         setTimeout(function () {
-          document.getElementById("correct-msg").textContent = "CORRECT!";
-
-          // Filling the reservoir
           let reservoir = document.getElementById("reservoir");
           correctGuesses++;
+          if (correctGuesses === planetWords.length) {
+            document.getElementById("winner-msg").textContent = "YOU WON!";
+          } else {
+            document.getElementById("correct-msg").textContent = "CORRECT!";
+          }
+
+          // Filling the reservoir
           let heightToFill = reservoir.offsetHeight * (0.25 * correctGuesses);
           let filledHeight = 0;
           let intervalId = setInterval(function () {
@@ -82,22 +86,37 @@ keys.forEach(function (key) {
             currentImageIndex = (currentImageIndex + 1) % imageArray.length;
             currentImage.src = imageArray[currentImageIndex];
             document.getElementById("correct-msg").textContent = "";
+            document.getElementById("winner-msg").textContent = "";
             input.value = "";
 
             // Reseting the reservoir bar
             if (correctGuesses === planetWords.length) {
+              document.querySelector(".rocket1").src =
+                "Image_reference/rocket-overlay.png";
               setTimeout(function () {
                 reservoir.style.background = "transparent";
                 correctGuesses = 0;
-              }, 500);
+                document.querySelector(".rocket1").src =
+                  "Image_reference/rocket1.png";
+              }, 2000);
             }
           }, 2700);
         }, 0);
       }
-     } else {
+      key.style.backgroundColor = "#00FF7F";
+      setTimeout(function () {
+        key.style.backgroundColor = "#008080";
+      }, 1500);
+    } else {
       key.setAttribute("id", "shake");
+      key.style.backgroundColor = "#FF0000";
+      key.style.color = "#FFF";
+      key.classList.add("letter-blink");
       setTimeout(function () {
         key.setAttribute("id", "");
+        key.style.backgroundColor = "#008080";
+        key.style.color = "#FFF";
+        key.classList.remove("letter-blink");
       }, 700);
     }
   });

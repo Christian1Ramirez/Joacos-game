@@ -1,12 +1,127 @@
+@media screen and (max-width: 600px) {
+ #body {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  overflow: hidden;
+  background-image: url("./Image_reference/space.png");
+  background-size: cover;
+  height: 100vh;
+ }
+
+ .rocket1 {
+   height: 20rem;
+   margin-top: -5rem;
+ }
+ 
+ #top-box {
+   flex-direction: column;
+   align-items: center;
+   margin-top: 2rem;
+ }
+ 
+ #correct-div {
+   margin-bottom: 1rem;
+ }
+ 
+ #reset-btn {
+   margin-top: 1rem;
+ }
+ 
+ #image-array {
+   margin-top: 8rem;
+ }
+ 
+ .input-box {
+   margin: 1rem 7vw 1rem 1vw;
+ }
+ 
+ #input-bar {
+   font-size: 30px;
+ }
+ 
+ #play-btn {
+   min-width: 8rem;
+ }
+ 
+ .key {
+   width: 4rem;
+   height: 3rem;
+   margin: 2px;
+   font-size: 1.5rem;
+   line-height: 20px;
+ }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1200px) {
+ #body {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  overflow: hidden;
+  background-image: url("./Image_reference/space.png");
+  background-size: cover;
+  height: 100vh;
+ }
+ 
+ .rocket1 {
+   height: 30rem;
+   margin-top: -7.5rem;
+ }
+ 
+ #top-box {
+   flex-direction: column;
+   align-items: center;
+   margin-top: 3rem;
+ }
+ 
+ #correct-div {
+   margin-bottom: 2rem;
+ }
+ 
+ #reset-btn {
+   margin-top: 2rem;
+ }
+ 
+ #image-array {
+   margin-top: 12rem;
+ }
+ 
+ .input-box {
+   margin: 2rem 7vw 2rem 1vw;
+ }
+ 
+ #input-bar {
+   font-size: 40px;
+ }
+ 
+ #play-btn {
+   min-width: 10rem;
+ }
+ 
+ .key {
+   width: 6rem;
+   height: 4rem;
+   margin: 3px;
+   font-size: 2rem;
+   line-height: 30px;
+ }
+}
+
+@media screen and (min-width: 1200px) {
+
+* {
+ margin: 0;
+}
+
 #body {
  display: grid;
  grid-template-columns: 1fr 5fr;
  overflow: hidden;
  background-image: url("./Image_reference/space.png");
  background-size: cover;
+ height: 100vh;
 }
 
-.rocket {
+.rocket1 {
  height: 40rem;
  margin-top: -10rem;
 }
@@ -16,31 +131,32 @@
  display: grid;
  align-items: center;
  margin-left: 3rem;
- height: 100rem;
 }
 
 #top-box {
  display: flex;
  justify-content: space-evenly;
+ margin-top: 4rem; 
 }
 
-#fullscreen-btn {
- height: 5rem;
+#fullscreen-btn, #reset-btn {
+ height: 10rem;
  border-radius: 10px;
 }
 
-#correct-msg {
+#correct-msg, #winner-msg {
  font-weight: bold;
  display: block;
  color: white;
- font-size: 10rem;
+ font-size: 5rem;
+ position: absolute;
+ top: 15%;
+ left: 52%;
 }
 
-#reset-btn {
- height: 4rem;
- border-radius: 10px;
+#image-array {
+ margin-top: 15rem
 }
-
 
 .input-box {
  display: grid;
@@ -51,12 +167,12 @@
 
 #input-bar {
  border-radius: 3rem;
- font-size: 50PX;
+ font-size: 50px;
 }
 
 #play-btn {
  border-radius: 5px;
- height: 5rem;
+ height: 4rem;
  min-width: 12rem
 }
 
@@ -157,7 +273,7 @@ button:active {
  }
 }
 
-#letterBlink {
+.letter-blink {
  text-decoration: blink;
  color: red;
  -webkit-text-stroke: 1px;
@@ -170,6 +286,7 @@ button:active {
  animation-iteration-count: infinite;
  animation-timing-function: ease-in-out;
  animation-direction: alternate;
+ animation: blinker 0.6s linear infinite;
 }
 
 @keyframes shake {
@@ -188,5 +305,13 @@ button:active {
  animation-name: shake;
  animation-duration: 0.7s;
  background-color: firebrick;
+}
+
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
 }
 
