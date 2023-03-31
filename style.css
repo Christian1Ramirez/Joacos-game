@@ -235,7 +235,7 @@
   #reservoir {
     width: 3.5rem;
     height: 15rem;
-    border: 2px solid #000;
+    border: none;
     background-color: #ccc;
     position: absolute;
     bottom: 35rem;
@@ -297,10 +297,15 @@
 
 /* } */
 .pulse {
+ text-decoration: blink;
+ color: red;
+ font-weight: 800;
+ background-color: sandybrown;
  animation-name: pulse;
- animation-duration: 1s;
+ animation-duration: 1.5s;
  animation-iteration-count: infinite;
  animation-timing-function: ease-in-out;
+ animation-direction: alternate;
 }
 
 @keyframes pulse {
