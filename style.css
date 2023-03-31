@@ -141,8 +141,8 @@
 
   #fullscreen-btn,
   #reset-btn {
-    height: 10rem;
-    border-radius: 10px;
+    height: 5rem;
+    border-radius: 5px;
   }
 
   #correct-msg,
@@ -150,14 +150,14 @@
     font-weight: bold;
     display: block;
     color: white;
-    font-size: 5rem;
+    font-size: 3rem;
     position: absolute;
     top: 15%;
     left: 52%;
   }
 
   #planet-array {
-    margin-top: 15rem;
+    margin-top: 10rem;
   }
 
   .input-box {
