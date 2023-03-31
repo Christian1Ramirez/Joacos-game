@@ -18,7 +18,7 @@ fullScreenBtn.addEventListener("click", function () {
 let restartBtn = document.getElementById("reset-btn");
 restartBtn.addEventListener("click", function () {
   currentImageIndex = 0;
-  currentImage.src = imageArray[currentImageIndex];
+  currentImage.src = planetArray[currentImageIndex];
   input.value = "";
   currentIndex = 0;
   document.getElementById("correct-msg").textContent = "";
@@ -28,7 +28,7 @@ restartBtn.addEventListener("click", function () {
 });
 
 //IMAGE DISPLAYED
-let imageArray = [
+let planetArray = [
   "Image_reference/earth.png",
   "Image_reference/saturn.png",
   "Image_reference/mars.png",
@@ -37,10 +37,10 @@ let imageArray = [
 
 let currentImageIndex = 0;
 let currentImage = document.createElement("img");
-currentImage.src = imageArray[currentImageIndex];
+currentImage.src = planetArray[currentImageIndex];
 currentImage.style.width = "25rem";
 currentImage.style.height = "25rem";
-document.getElementById("image-array").appendChild(currentImage);
+document.getElementById("planet-array").appendChild(currentImage);
 
 //words typed
 let keys = document.querySelectorAll(".key");
@@ -65,7 +65,7 @@ keys.forEach(function (key) {
           let reservoir = document.getElementById("reservoir");
           correctGuesses++;
           if (correctGuesses === planetWords.length) {
-            document.getElementById("winner-msg").textContent = "YOU WON!";
+            document.getElementById("winner-msg").textContent = "BLAST OFF!";
           } else {
             document.getElementById("correct-msg").textContent = "CORRECT!";
           }
@@ -83,23 +83,22 @@ keys.forEach(function (key) {
           }, 50);
 
           setTimeout(function () {
-            currentImageIndex = (currentImageIndex + 1) % imageArray.length;
-            currentImage.src = imageArray[currentImageIndex];
+            currentImageIndex = (currentImageIndex + 1) % planetArray.length;
+            currentImage.src = planetArray[currentImageIndex];
             document.getElementById("correct-msg").textContent = "";
             document.getElementById("winner-msg").textContent = "";
             input.value = "";
 
             // Reseting the reservoir bar
             if (correctGuesses === planetWords.length) {
-              document.querySelector(".rocket1").src =
-                "Image_reference/rocket-overlay.png";
-              setTimeout(function () {
-                reservoir.style.background = "transparent";
-                correctGuesses = 0;
-                document.querySelector(".rocket1").src =
-                  "Image_reference/rocket1.png";
-              }, 2000);
-            }
+             document.querySelector(".rocket1").src = "Image_reference/rocket-overlay.jpg";
+             setTimeout(function () {
+               reservoir.style.background = "transparent";
+               correctGuesses = 0;
+               document.querySelector(".rocket1").src = "Image_reference/rocket1.jpg";
+             }, 5000);
+             reservoir.style.background = "transparent"; 
+           }
           }, 2700);
         }, 0);
       }
@@ -111,12 +110,10 @@ keys.forEach(function (key) {
       key.setAttribute("id", "shake");
       key.style.backgroundColor = "#FF0000";
       key.style.color = "#FFF";
-      key.classList.add("letter-blink");
       setTimeout(function () {
         key.setAttribute("id", "");
         key.style.backgroundColor = "#008080";
         key.style.color = "#FFF";
-        key.classList.remove("letter-blink");
       }, 700);
     }
   });
