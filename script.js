@@ -80,7 +80,7 @@ keys.forEach(function (key) {
               filledHeight += 5;
               reservoir.style.background = `linear-gradient(to top, #f5c156 ${filledHeight}px, transparent ${filledHeight}px)`;
             }
-          }, 50);
+          }, 40);
 
           setTimeout(function () {
             currentImageIndex = (currentImageIndex + 1) % planetArray.length;
@@ -96,7 +96,7 @@ keys.forEach(function (key) {
                reservoir.style.background = "transparent";
                correctGuesses = 0;
                document.querySelector(".rocket1").src = "Image_reference/rocket1.jpg";
-             }, 5000);
+             }, 4000);
              reservoir.style.background = "transparent"; 
            }
           }, 2700);
