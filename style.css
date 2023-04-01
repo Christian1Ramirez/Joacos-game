@@ -1,5 +1,5 @@
-* {
-  margin: 0;
+body {
+ margin: 0;
 }
 
 #body {
@@ -11,7 +11,8 @@
   height: 100vh;
 }
 
-.rocket1, .rocket-overlay {
+.rocket1,
+.rocket-overlay {
   height: auto;
   width: 100%;
   margin-top: -10rem;
@@ -21,7 +22,7 @@
   position: relative;
   display: grid;
   align-items: center;
-  width: 120%
+  width: 120%;
 }
 
 #top-box {
@@ -32,7 +33,7 @@
 
 #fullscreen-btn,
 #reset-btn {
-  height: 5rem;
+  height: 6rem;
   border-radius: 5px;
 }
 
@@ -41,10 +42,11 @@
   font-weight: bold;
   display: block;
   color: white;
-  font-size: 3rem;
+  font-family: "SuperMario256", sans-serif;
+  font-size: 5rem;
   position: absolute;
-  top: 15%;
-  left: 52%;
+  top: 8%;
+  left: 50.5%;
 }
 
 #planet-array {
@@ -59,7 +61,7 @@
 }
 
 .buffer {
- margin-top: 3rem;
+  margin-top: 3rem;
 }
 
 #input-bar {
@@ -72,6 +74,10 @@
   border-radius: 5px;
   height: 4rem;
   min-width: 12rem;
+  background-position: center;
+  background-image: url("./Image_reference/speaking.png");
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 #keyboard {
@@ -94,8 +100,9 @@
   text-align: center;
   display: flex;
   align-items: center;
-  line-height: 40px;
-  font-size: 1rem;
+  /* line-height: 40px; */
+  font-size: 2rem;
+  /* font-weight: bold; */
   color: #fff;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease-in-out;
@@ -125,8 +132,8 @@
   border: none;
   background-color: #ccc;
   position: absolute;
-  bottom: 40rem;
-  transform: translateX(-40%);
+  bottom: 38rem;
+  transform: translateX(-20%);
 }
 
 button {
@@ -134,8 +141,8 @@ button {
   border-radius: 50px;
   color: #fff;
   background-color: #008080;
-  font-size: 1.5rem;
   font-weight: bold;
+  font-size: 1.8rem;
   padding: 1rem 2rem;
   text-align: center;
   text-decoration: none;
@@ -156,51 +163,53 @@ button:active {
   box-shadow: none;
 }
 
-@keyframes shake {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-  10%,
-  30%,
-  50%,
-  70%,
-  90% {
-    transform: translate3d(-5px, 0, 0);
-  }
-  20%,
-  40%,
-  60%,
-  80% {
-    transform: translate3d(5px, 0, 0);
-  }
+.pulse {
+  text-decoration: blink;
+  color: red;
+  /* font-weight: 800; */
+  background-color: sandybrown;
+  animation-name: pulse;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
 }
 
 #shake {
-  animation-name: shake;
-  animation-duration: 0.7s;
+ animation-name: shake;
+ animation-duration: 0.7s;
 }
 
-.pulse {
-text-decoration: blink;
-color: red;
-font-weight: 800;
-background-color: sandybrown;
-animation-name: pulse;
-animation-duration: 1.5s;
-animation-iteration-count: infinite;
-animation-timing-function: ease-in-out;
-animation-direction: alternate;
+@keyframes shake {
+ 0%, 100% {
+   transform: translate3d(0, 0, 0);
+ }
+ 10%, 30%, 50%, 70%, 90% {
+   transform: translate3d(-5px, 0, 0);
+ }
+ 20%, 40%, 60%, 80% {
+   transform: translate3d(5px, 0, 0);
+ }
 }
 
 @keyframes pulse {
-0% {
- transform: scale(1);
+ 0% {
+   transform: scale(1);
+ }
+ 50% {
+   transform: scale(1.2);
+ }
+ 100% {
+   transform: scale(1);
+ }
 }
-50% {
- transform: scale(1.2);
+
+@font-face {
+ font-family: "Schoolbell";
+ src: url("./Fonts/Schoolbell/Schoolbell-Regular.ttf") format("truetype");
 }
-100% {
- transform: scale(1);
-}
+
+@font-face {
+ font-family: "SuperMario256";
+ src: url("./Fonts/SuperMario256.ttf") format("truetype");
 }

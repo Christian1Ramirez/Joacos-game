@@ -15,16 +15,21 @@ fullScreenBtn.addEventListener("click", function () {
 });
 
 // Restart button
-let restartBtn = document.getElementById("reset-btn");
-restartBtn.addEventListener("click", function () {
+let resetBtn = document.getElementById("reset-btn");
+resetBtn.addEventListener("click", function () {
+  clearTimeout(hintTimeout);
+  removeHint();
+  hintTimeout = setTimeout(addHint, 5000);
+  document.getElementById("reservoir").style.background = "transparent";
   currentImageIndex = 0;
   currentImage.src = planetArray[currentImageIndex];
+  mySound.pause();
+  mySound.currentTime = 0;
   input.value = "";
   currentIndex = 0;
-  document.getElementById("correct-msg").textContent = "";
-  let reservoir = document.getElementById("reservoir");
-  reservoir.style.background = "transparent";
   correctGuesses = 0;
+  document.querySelector(".rocket1").src = "Image_reference/rocket1.jpg";
+  document.getElementById("winner-msg").textContent = "";
 });
 
 //IMAGE DISPLAYED
@@ -49,55 +54,59 @@ let planetWords = ["EARTH", "SATURN", "MARS", "URANUS"];
 let currentIndex = 0;
 let correctGuesses = 0;
 let hintTimeout = setTimeout(addHint, 5000);
-let style = document.createElement('style');
-style.innerHTML = '.pulse { background-color: sandybrown !important; text-decoration:red blink !important;}';
+let style = document.createElement("style");
+style.innerHTML =
+  ".pulse { background-color: sandybrown !important; color:red !important;}";
 document.head.appendChild(style);
-
 
 function addHint() {
   let word = planetWords[currentImageIndex];
-  let correctKey = Array.from(keys).find(key => key.textContent === word[currentIndex]);
+  let correctKey = Array.from(keys).find(
+    (key) => key.textContent === word[currentIndex]
+  );
 
   if (correctKey) {
-    correctKey.classList.add('pulse');
+    correctKey.classList.add("pulse");
   }
- }
+}
 
 function removeHint() {
   let word = planetWords[currentImageIndex];
-  let correctKey = Array.from(keys).find(key => key.textContent === word[currentIndex]);
+  let correctKey = Array.from(keys).find(
+    (key) => key.textContent === word[currentIndex]
+  );
 
   if (correctKey) {
-    correctKey.classList.remove('pulse');
+    correctKey.classList.remove("pulse");
   }
 }
 
 keys.forEach(function (key) {
- key.addEventListener("click", function () {
-   clearTimeout(hintTimeout);
+  key.addEventListener("click", function () {
+    clearTimeout(hintTimeout);
 
-   let letter = key.textContent;
-   let word = planetWords[currentImageIndex];
+    let letter = key.textContent;
+    let word = planetWords[currentImageIndex];
 
-   if (letter === word[currentIndex]) {
-     removeHint();
-     input.value += letter;
-     currentIndex++;
-     setTimeout(function () {
-      key.style.backgroundColor = "#008080";
+    if (letter === word[currentIndex]) {
+      removeHint();
+      input.value += letter;
+      currentIndex++;
+      setTimeout(function () {
+        key.style.backgroundColor = "#008080";
       }, 1500);
 
-     if (currentIndex === word.length) {
-       input.value = word;
-       currentIndex = 0;
-       setTimeout(function () {
-         let reservoir = document.getElementById("reservoir");
-         correctGuesses++;
-         if (correctGuesses === planetWords.length) {
-           document.getElementById("winner-msg").textContent = "BLAST OFF!";
-         } else {
-           document.getElementById("correct-msg").textContent = "CORRECT!";
-         }
+      if (currentIndex === word.length) {
+        input.value = word;
+        currentIndex = 0;
+        setTimeout(function () {
+          let reservoir = document.getElementById("reservoir");
+          correctGuesses++;
+          if (correctGuesses === planetWords.length) {
+            document.getElementById("winner-msg").textContent = "BLAST OFF!";
+          } else {
+            document.getElementById("correct-msg").textContent = "CORRECT!";
+          }
           let heightToFill = reservoir.offsetHeight * (0.25 * correctGuesses);
           let filledHeight = 0;
           let intervalId = setInterval(function () {
@@ -119,14 +128,16 @@ keys.forEach(function (key) {
 
             // Reseting the reservoir bar
             if (correctGuesses === planetWords.length) {
-             document.querySelector(".rocket1").src = "Image_reference/rocket-overlay.jpg";
-             setTimeout(function () {
-               reservoir.style.background = "transparent";
-               correctGuesses = 0;
-               document.querySelector(".rocket1").src = "Image_reference/rocket1.jpg";
-             }, 4000);
-             reservoir.style.background = "transparent"; 
-           }
+              document.querySelector(".rocket1").src =
+                "Image_reference/rocket-overlay.jpg";
+              setTimeout(function () {
+                reservoir.style.background = "transparent";
+                correctGuesses = 0;
+                document.querySelector(".rocket1").src =
+                  "Image_reference/rocket1.jpg";
+              }, 4000);
+              reservoir.style.background = "transparent";
+            }
           }, 2700);
         }, 0);
       }
@@ -167,4 +178,3 @@ playBtn.addEventListener("click", function () {
     mySound.pause();
   }
 });
-
