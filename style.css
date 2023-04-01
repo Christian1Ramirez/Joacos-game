@@ -168,11 +168,11 @@
   }
 
   .buffer {
-   margin-top: 5rem;
+   margin-top: 3rem;
   }
 
   #input-bar {
-    border-radius: 3rem;
+    border-radius: 2rem;
     font-size: 50px;
   }
 
@@ -194,8 +194,8 @@
 
   .key {
     justify-content: center;
-    width: 8rem;
-    height: 5rem;
+    width: 7rem;
+    height: 4rem;
     margin: 3px;
     border: none;
     border-radius: 50px;
@@ -203,7 +203,7 @@
     display: flex;
     align-items: center;
     line-height: 40px;
-    font-size: 2rem;
+    font-size: 1rem;
     background-color: #008080;
     color: #fff;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
@@ -233,8 +233,8 @@
   }
 
   #reservoir {
-    width: 3.5rem;
-    height: 15rem;
+    width: 2rem;
+    height: 10rem;
     border: none;
     background-color: #ccc;
     position: absolute;
