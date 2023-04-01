@@ -96,7 +96,6 @@
   align-items: center;
   line-height: 40px;
   font-size: 1rem;
-  background-color: #008080;
   color: #fff;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease-in-out;
@@ -180,7 +179,6 @@ button:active {
 #shake {
   animation-name: shake;
   animation-duration: 0.7s;
-  background-color: firebrick;
 }
 
 .pulse {

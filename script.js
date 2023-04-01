@@ -50,7 +50,7 @@ let currentIndex = 0;
 let correctGuesses = 0;
 let hintTimeout = setTimeout(addHint, 5000);
 let style = document.createElement('style');
-style.innerHTML = '.pulse { background-color: sandybrown !important; }';
+style.innerHTML = '.pulse { background-color: sandybrown !important; text-decoration:red blink !important;}';
 document.head.appendChild(style);
 
 
@@ -85,7 +85,6 @@ keys.forEach(function (key) {
      currentIndex++;
      setTimeout(function () {
       key.style.backgroundColor = "#008080";
-        hintTimeout = setTimeout(addHint, 5000);
       }, 1500);
 
      if (currentIndex === word.length) {
@@ -145,6 +144,7 @@ keys.forEach(function (key) {
         key.style.color = "#FFF";
       }, 700);
     }
+    hintTimeout = setTimeout(addHint, 5000);
   });
 });
 
