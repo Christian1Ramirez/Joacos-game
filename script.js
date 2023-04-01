@@ -1,8 +1,9 @@
-//fullscreen button
+// Fullscreen button
 let fullScreenBtn = document.getElementById("fullscreen-btn");
 
 fullScreenBtn.addEventListener("click", function () {
   let docElm = document.documentElement;
+
   if (docElm.requestFullscreen) {
     docElm.requestFullscreen();
   } else if (docElm.webkitRequestFullScreen) {
@@ -16,6 +17,7 @@ fullScreenBtn.addEventListener("click", function () {
 
 // Restart button
 let resetBtn = document.getElementById("reset-btn");
+
 resetBtn.addEventListener("click", function () {
   clearTimeout(hintTimeout);
   removeHint();
@@ -32,7 +34,7 @@ resetBtn.addEventListener("click", function () {
   document.getElementById("winner-msg").textContent = "";
 });
 
-//IMAGE DISPLAYED
+// Image displayed
 let planetArray = [
   "Image_reference/earth.png",
   "Image_reference/saturn.png",
@@ -47,7 +49,7 @@ currentImage.style.width = "20rem";
 currentImage.style.height = "20rem";
 document.getElementById("planet-array").appendChild(currentImage);
 
-//words typed
+// Letters clicked
 let keys = document.querySelectorAll(".key");
 let input = document.getElementById("input-bar");
 let planetWords = ["EARTH", "SATURN", "MARS", "URANUS"];
@@ -55,10 +57,10 @@ let currentIndex = 0;
 let correctGuesses = 0;
 let hintTimeout = setTimeout(addHint, 5000);
 let style = document.createElement("style");
-style.innerHTML =
-  ".pulse {background-color: sandybrown; color:red;}";
+style.innerHTML = ".pulse {background-color: sandybrown; color:red;}";
 document.head.appendChild(style);
 
+// Add a hint by pulsing the correct key
 function addHint() {
   let word = planetWords[currentImageIndex];
   let correctKey = Array.from(keys).find(
@@ -82,82 +84,82 @@ function removeHint() {
 }
 
 keys.forEach(function (key) {
- key.addEventListener("click", function () {
-   clearTimeout(hintTimeout);
+  key.addEventListener("click", function () {
+    clearTimeout(hintTimeout);
 
-   let letter = key.textContent;
-   let word = planetWords[currentImageIndex];
+    let letter = key.textContent;
+    let word = planetWords[currentImageIndex];
 
-   if (letter === word[currentIndex]) {
-     removeHint();
-     input.value += letter;
-     currentIndex++;
+    if (letter === word[currentIndex]) {
+      removeHint();
+      input.value += letter;
+      currentIndex++;
 
-     key.classList.add("correct-key");
-     setTimeout(function () {
-       key.classList.remove("correct-key");
-     }, 1500);
+      key.classList.add("correct-key");
+      setTimeout(function () {
+        key.classList.remove("correct-key");
+      }, 1500);
 
-     if (currentIndex === word.length) {
+      if (currentIndex === word.length) {
         input.value = word;
         currentIndex = 0;
-        setTimeout(function () {
-          let reservoir = document.getElementById("reservoir");
-          correctGuesses++;
-          if (correctGuesses === planetWords.length) {
-            document.getElementById("winner-msg").textContent = "BLAST OFF!";
-          } else {
-            document.getElementById("correct-msg").textContent = "CORRECT!";
-          }
-          let heightToFill = reservoir.offsetHeight * (0.25 * correctGuesses);
-          let filledHeight = 0;
-          let intervalId = setInterval(function () {
-            if (filledHeight >= heightToFill) {
-              clearInterval(intervalId);
-            } else {
-              filledHeight += 5;
-              reservoir.style.background = `linear-gradient(to top, #f5c156 ${filledHeight}px, transparent ${filledHeight}px)`;
-            }
-          }, 40);
+        updateGameProgress();
+      }
+    } else {
+      key.classList.add("wrong-key");
+      setTimeout(function () {
+        key.classList.remove("wrong-key");
+      }, 700);
+    }
+    hintTimeout = setTimeout(addHint, 5000);
+  });
+});
 
-          setTimeout(function () {
-            currentImageIndex = (currentImageIndex + 1) % planetArray.length;
-            currentImage.src = planetArray[currentImageIndex];
-            document.getElementById("correct-msg").textContent = "";
-            document.getElementById("winner-msg").textContent = "";
-            input.value = "";
-            currentIndex = 0;
+function updateGameProgress() {
+  let reservoir = document.getElementById("reservoir");
+  correctGuesses++;
 
-            // Reseting the reservoir bar
-            if (correctGuesses === planetWords.length) {
-              document.querySelector(".rocket1").src =
-                "Image_reference/rocket-overlay.jpg";
-              setTimeout(function () {
-                reservoir.style.background = "transparent";
-                correctGuesses = 0;
-                document.querySelector(".rocket1").src =
-                  "Image_reference/rocket1.jpg";
-              }, 4000);
-              reservoir.style.background = "transparent";
-            }
-          }, 2700);
-        }, 0);
-       }
-       key.classList.add("correct-key");
-       setTimeout(function () {
-         key.classList.remove("correct-key");
-       }, 1500);
-      } else {
-       key.classList.add("wrong-key");
-       setTimeout(function () {
-         key.classList.remove("wrong-key");
-       }, 700);
-     }
-     hintTimeout = setTimeout(addHint, 5000);
-   });
- });
+  if (correctGuesses === planetWords.length) {
+    document.getElementById("winner-msg").textContent = "BLAST OFF!";
+  } else {
+    document.getElementById("correct-msg").textContent = "CORRECT!";
+  }
 
-//sounds bites
+  // Update the reservoir bar
+  let heightToFill = reservoir.offsetHeight * (0.25 * correctGuesses);
+  let filledHeight = 0;
+  let intervalId = setInterval(function () {
+    if (filledHeight >= heightToFill) {
+      clearInterval(intervalId);
+    } else {
+      filledHeight += 5;
+      reservoir.style.background = `linear-gradient(to top, #f5c156 ${filledHeight}px, transparent ${filledHeight}px)`;
+    }
+  }, 40);
+
+  setTimeout(function () {
+    currentImageIndex = (currentImageIndex + 1) % planetArray.length;
+    currentImage.src = planetArray[currentImageIndex];
+    document.getElementById("correct-msg").textContent = "";
+    document.getElementById("winner-msg").textContent = "";
+    input.value = "";
+    currentIndex = 0;
+
+    // Resetting the game after blast off
+    if (correctGuesses === planetWords.length) {
+      document.querySelector(".rocket1").src =
+        "Image_reference/rocket-overlay.jpg";
+      setTimeout(function () {
+        reservoir.style.background = "transparent";
+        correctGuesses = 0;
+        document.querySelector(".rocket1").src = "Image_reference/rocket1.jpg";
+      }, 4000);
+      reservoir.style.background = "transparent";
+    }
+  }, 2700);
+}
+
+// Sound bites
 let soundArray = [
   "Sound-bites/earth.wav",
   "Sound-bites/saturn.wav",
