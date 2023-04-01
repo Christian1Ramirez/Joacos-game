@@ -48,29 +48,57 @@ let input = document.getElementById("input-bar");
 let planetWords = ["EARTH", "SATURN", "MARS", "URANUS"];
 let currentIndex = 0;
 let correctGuesses = 0;
+let hintTimeout = setTimeout(addHint, 5000);
+let style = document.createElement('style');
+style.innerHTML = '.pulse { background-color: sandybrown !important; }';
+document.head.appendChild(style);
+
+
+function addHint() {
+  let word = planetWords[currentImageIndex];
+  let correctKey = Array.from(keys).find(key => key.textContent === word[currentIndex]);
+
+  if (correctKey) {
+    correctKey.classList.add('pulse');
+  }
+ }
+
+function removeHint() {
+  let word = planetWords[currentImageIndex];
+  let correctKey = Array.from(keys).find(key => key.textContent === word[currentIndex]);
+
+  if (correctKey) {
+    correctKey.classList.remove('pulse');
+  }
+}
 
 keys.forEach(function (key) {
-  key.addEventListener("click", function () {
-    let letter = key.textContent;
-    let word = planetWords[currentImageIndex];
+ key.addEventListener("click", function () {
+   clearTimeout(hintTimeout);
 
-    if (letter === word[currentIndex]) {
-      input.value += letter;
-      currentIndex++;
+   let letter = key.textContent;
+   let word = planetWords[currentImageIndex];
 
-      if (currentIndex === word.length) {
-        input.value = word;
-        currentIndex = 0;
-        setTimeout(function () {
-          let reservoir = document.getElementById("reservoir");
-          correctGuesses++;
-          if (correctGuesses === planetWords.length) {
-            document.getElementById("winner-msg").textContent = "BLAST OFF!";
-          } else {
-            document.getElementById("correct-msg").textContent = "CORRECT!";
-          }
+   if (letter === word[currentIndex]) {
+     removeHint();
+     input.value += letter;
+     currentIndex++;
+     setTimeout(function () {
+      key.style.backgroundColor = "#008080";
+        hintTimeout = setTimeout(addHint, 5000);
+      }, 1500);
 
-          // Filling the reservoir
+     if (currentIndex === word.length) {
+       input.value = word;
+       currentIndex = 0;
+       setTimeout(function () {
+         let reservoir = document.getElementById("reservoir");
+         correctGuesses++;
+         if (correctGuesses === planetWords.length) {
+           document.getElementById("winner-msg").textContent = "BLAST OFF!";
+         } else {
+           document.getElementById("correct-msg").textContent = "CORRECT!";
+         }
           let heightToFill = reservoir.offsetHeight * (0.25 * correctGuesses);
           let filledHeight = 0;
           let intervalId = setInterval(function () {
@@ -88,6 +116,7 @@ keys.forEach(function (key) {
             document.getElementById("correct-msg").textContent = "";
             document.getElementById("winner-msg").textContent = "";
             input.value = "";
+            currentIndex = 0;
 
             // Reseting the reservoir bar
             if (correctGuesses === planetWords.length) {
@@ -127,8 +156,8 @@ let soundArray = [
   "Sound-bites/uranus.wav",
 ];
 
-const playBtn = document.getElementById("play-btn");
-const mySound = document.getElementById("my-Sound");
+let playBtn = document.getElementById("play-btn");
+let mySound = document.getElementById("my-Sound");
 
 playBtn.addEventListener("click", function () {
   if (mySound.paused) {
@@ -138,3 +167,4 @@ playBtn.addEventListener("click", function () {
     mySound.pause();
   }
 });
+
