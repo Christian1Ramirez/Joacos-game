@@ -157,7 +157,7 @@
   }
 
   #planet-array {
-    margin-top: 10rem;
+    margin-top: 13rem;
   }
 
   .input-box {
@@ -238,7 +238,7 @@
     border: none;
     background-color: #ccc;
     position: absolute;
-    bottom: 35rem;
+    bottom: 40rem;
     transform: translateX(-40%);
   }
 

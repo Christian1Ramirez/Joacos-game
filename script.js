@@ -38,8 +38,8 @@ let planetArray = [
 let currentImageIndex = 0;
 let currentImage = document.createElement("img");
 currentImage.src = planetArray[currentImageIndex];
-currentImage.style.width = "15rem";
-currentImage.style.height = "15rem";
+currentImage.style.width = "20rem";
+currentImage.style.height = "20rem";
 document.getElementById("planet-array").appendChild(currentImage);
 
 //words typed
