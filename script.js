@@ -56,7 +56,7 @@ let correctGuesses = 0;
 let hintTimeout = setTimeout(addHint, 5000);
 let style = document.createElement("style");
 style.innerHTML =
-  ".pulse { background-color: sandybrown !important; color:red !important;}";
+  ".pulse {background-color: sandybrown; color:red;}";
 document.head.appendChild(style);
 
 function addHint() {
@@ -82,21 +82,23 @@ function removeHint() {
 }
 
 keys.forEach(function (key) {
-  key.addEventListener("click", function () {
-    clearTimeout(hintTimeout);
+ key.addEventListener("click", function () {
+   clearTimeout(hintTimeout);
 
-    let letter = key.textContent;
-    let word = planetWords[currentImageIndex];
+   let letter = key.textContent;
+   let word = planetWords[currentImageIndex];
 
-    if (letter === word[currentIndex]) {
-      removeHint();
-      input.value += letter;
-      currentIndex++;
-      setTimeout(function () {
-        key.style.backgroundColor = "#008080";
-      }, 1500);
+   if (letter === word[currentIndex]) {
+     removeHint();
+     input.value += letter;
+     currentIndex++;
 
-      if (currentIndex === word.length) {
+     key.classList.add("correct-key");
+     setTimeout(function () {
+       key.classList.remove("correct-key");
+     }, 1500);
+
+     if (currentIndex === word.length) {
         input.value = word;
         currentIndex = 0;
         setTimeout(function () {
@@ -140,24 +142,20 @@ keys.forEach(function (key) {
             }
           }, 2700);
         }, 0);
-      }
-      key.style.backgroundColor = "#00FF7F";
-      setTimeout(function () {
-        key.style.backgroundColor = "#008080";
-      }, 1500);
-    } else {
-      key.setAttribute("id", "shake");
-      key.style.backgroundColor = "#FF0000";
-      key.style.color = "#FFF";
-      setTimeout(function () {
-        key.setAttribute("id", "");
-        key.style.backgroundColor = "#008080";
-        key.style.color = "#FFF";
-      }, 700);
-    }
-    hintTimeout = setTimeout(addHint, 5000);
-  });
-});
+       }
+       key.classList.add("correct-key");
+       setTimeout(function () {
+         key.classList.remove("correct-key");
+       }, 1500);
+      } else {
+       key.classList.add("wrong-key");
+       setTimeout(function () {
+         key.classList.remove("wrong-key");
+       }, 700);
+     }
+     hintTimeout = setTimeout(addHint, 5000);
+   });
+ });
 
 //sounds bites
 let soundArray = [

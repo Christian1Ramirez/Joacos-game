@@ -78,6 +78,7 @@ body {
   background-image: url("./Image_reference/speaking.png");
   background-repeat: no-repeat;
   background-size: contain;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2), inset 0 0 5px rgba(255, 255, 255, 0.2);  
 }
 
 #keyboard {
@@ -104,8 +105,19 @@ body {
   font-size: 2rem;
   /* font-weight: bold; */
   color: #fff;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2), inset 0 0 5px rgba(255, 255, 255, 0.2);  
   transition: all 0.2s ease-in-out;
+}
+
+.correct-key {
+ background-color: #00FF7F !important;
+}
+
+.wrong-key {
+ background-color: #FF0000 !important;
+ color: #FFF;
+ animation-name: shake;
+ animation-duration: 0.7s;
 }
 
 .key:hover {
@@ -149,7 +161,7 @@ button {
   display: inline-block;
   margin: 1rem;
   transition: all 0.2s ease-in-out;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2), inset 0 0 5px rgba(255, 255, 255, 0.2);  
 }
 
 button:hover {
@@ -165,9 +177,9 @@ button:active {
 
 .pulse {
   text-decoration: blink;
-  color: red;
+  color: red !important;
   /* font-weight: 800; */
-  background-color: sandybrown;
+  background-color: sandybrown !important;
   animation-name: pulse;
   animation-duration: 1.5s;
   animation-iteration-count: infinite;
