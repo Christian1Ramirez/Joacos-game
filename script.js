@@ -167,10 +167,10 @@ let soundArray = [
   "Sound-bites/uranus.wav",
 ];
 
-let playBtn = document.getElementById("play-btn");
+let speakBtn = document.getElementById("speak-btn");
 let mySound = document.getElementById("my-Sound");
 
-playBtn.addEventListener("click", function () {
+speakBtn.addEventListener("click", function () {
   if (mySound.paused) {
     mySound.src = soundArray[currentImageIndex];
     mySound.play();
