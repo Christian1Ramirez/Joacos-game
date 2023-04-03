@@ -21,7 +21,7 @@ let resetBtn = document.getElementById("reset-btn");
 resetBtn.addEventListener("click", function () {
   clearTimeout(hintTimeout);
   removeHint();
-  hintTimeout = setTimeout(addHint, 5000);
+  hintTimeout = setTimeout(addHint, 8100);
   document.getElementById("reservoir").style.background = "transparent";
   currentImageIndex = 0;
   currentImage.src = planetArray[currentImageIndex];
@@ -55,7 +55,7 @@ let input = document.getElementById("input-bar");
 let planetWords = ["EARTH", "SATURN", "MARS", "URANUS"];
 let currentIndex = 0;
 let correctGuesses = 0;
-let hintTimeout = setTimeout(addHint, 5000);
+let hintTimeout = setTimeout(addHint, 8100);
 let style = document.createElement("style");
 style.innerHTML = ".pulse {background-color: sandybrown; color:red;}";
 document.head.appendChild(style);
@@ -111,19 +111,19 @@ keys.forEach(function (key) {
         key.classList.remove("wrong-key");
       }, 700);
     }
-    hintTimeout = setTimeout(addHint, 5000);
+    hintTimeout = setTimeout(addHint, 8100);
   });
 });
 
 function updateGameProgress() {
-  let reservoir = document.getElementById("reservoir");
-  correctGuesses++;
+ let reservoir = document.getElementById("reservoir");
+ correctGuesses++;
 
-  if (correctGuesses === planetWords.length) {
-    document.getElementById("winner-msg").textContent = "BLAST OFF!";
-  } else {
-    document.getElementById("correct-msg").textContent = "CORRECT!";
-  }
+ if (correctGuesses === planetWords.length) {
+   document.getElementById("winner-msg").textContent = "BLAST OFF!";
+ } else {
+   document.getElementById("correct-msg").textContent = "CORRECT!";
+ }
 
   // Update the reservoir bar
   let heightToFill = reservoir.offsetHeight * (0.25 * correctGuesses);
@@ -147,16 +147,18 @@ function updateGameProgress() {
 
     // Resetting the game after blast off
     if (correctGuesses === planetWords.length) {
-      document.querySelector(".rocket1").src =
-        "Image_reference/rocket-overlay.jpg";
-      setTimeout(function () {
-        reservoir.style.background = "transparent";
-        correctGuesses = 0;
-        document.querySelector(".rocket1").src = "Image_reference/rocket1.jpg";
-      }, 4000);
-      reservoir.style.background = "transparent";
-    }
-  }, 2700);
+     document.querySelector(".rocket1").src =
+       "Image_reference/rocket-overlay.jpg";
+     document.querySelector(".rocket1").classList.add("blast-off");
+     setTimeout(function () {
+       reservoir.style.background = "transparent";
+       correctGuesses = 0;
+       document.querySelector(".rocket1").classList.remove("blast-off");
+       document.querySelector(".rocket1").src = "Image_reference/rocket1.jpg";
+     }, 4000);
+     reservoir.style.background = "transparent";
+   }
+ }, 2700);
 }
 
 // Sound bites
