@@ -186,6 +186,13 @@ body {
  animation-name: shake;
  animation-duration: 0.7s;
  }
+
+ .blast-off {
+  animation-name: blast-off;
+  animation-duration: 3.8s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
  
  @keyframes shake {
  0%, 100% {
@@ -211,6 +218,14 @@ body {
  }
  }
  
+ @keyframes blast-off {
+   0% {
+     transform: translateY(0);
+   }
+   100% {
+     transform: translateY(-250%);
+   }
+ }
  @font-face {
  font-family: "Schoolbell";
  src: url("./Fonts/Schoolbell/Schoolbell-Regular.ttf") format("truetype");
@@ -221,18 +236,3 @@ body {
  src: url("./Fonts/SuperMario256.ttf") format("truetype");
  }
  
- .blast-off {
-  animation-name: blast-off;
-  animation-duration: 3.8s;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-}
-
-@keyframes blast-off {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-250%);
-  }
-}
