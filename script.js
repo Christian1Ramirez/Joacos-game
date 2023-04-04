@@ -36,11 +36,16 @@ resetBtn.addEventListener("click", function () {
 
 // Image displayed
 let planetArray = [
-  "Image_reference/earth.png",
-  "Image_reference/saturn.png",
-  "Image_reference/mars.png",
-  "Image_reference/uranus.png",
+ "Image_reference/mercury.png",
+ "Image_reference/venus.png",
+ "Image_reference/earth.png",
+ "Image_reference/mars.png",
+ "Image_reference/jupiter.png",
+ "Image_reference/saturn.png",
+ "Image_reference/uranus.png",
+ "Image_reference/neptune.png"
 ];
+
 
 let currentImageIndex = 0;
 let currentImage = document.createElement("img");
@@ -52,7 +57,7 @@ document.getElementById("planet-array").appendChild(currentImage);
 // Letters clicked
 let keys = document.querySelectorAll(".key");
 let input = document.getElementById("input-bar");
-let planetWords = ["EARTH", "SATURN", "MARS", "URANUS"];
+let planetWords = ["MERCURY", "VENUS", "EARTH", "MARS", "JUPITER", "SATURN", "URANUS", "NEPTUNE"]
 let currentIndex = 0;
 let correctGuesses = 0;
 let hintTimeout = setTimeout(addHint, 8100);
@@ -125,17 +130,17 @@ function updateGameProgress() {
    document.getElementById("correct-msg").textContent = "CORRECT!";
  }
 
-  // Update the reservoir bar
-  let heightToFill = reservoir.offsetHeight * (0.25 * correctGuesses);
-  let filledHeight = 0;
-  let intervalId = setInterval(function () {
-    if (filledHeight >= heightToFill) {
-      clearInterval(intervalId);
-    } else {
-      filledHeight += 5;
-      reservoir.style.background = `linear-gradient(to top, #f5c156 ${filledHeight}px, transparent ${filledHeight}px)`;
-    }
-  }, 40);
+// Update the reservoir bar
+let heightToFill = reservoir.offsetHeight * (correctGuesses / 8);
+let filledHeight = 0;
+let intervalId = setInterval(function () {
+  if (filledHeight >= heightToFill) {
+    clearInterval(intervalId);
+  } else {
+    filledHeight += 5;
+    reservoir.style.background = `linear-gradient(to top, #f5c156 ${filledHeight}px, transparent ${filledHeight}px)`;
+  }
+}, 40);
 
   setTimeout(function () {
     currentImageIndex = (currentImageIndex + 1) % planetArray.length;
@@ -163,10 +168,14 @@ function updateGameProgress() {
 
 // Sound bites
 let soundArray = [
+  "Sound-bites/mercury.wav",
+  "Sound-bites/venus.wav",
   "Sound-bites/earth.wav",
-  "Sound-bites/saturn.wav",
   "Sound-bites/mars.wav",
+  "Sound-bites/jupiter.wav",
+  "Sound-bites/saturn.wav",
   "Sound-bites/uranus.wav",
+  "Sound-bites/neptune.wav",
 ];
 
 let speakBtn = document.getElementById("speak-btn");
