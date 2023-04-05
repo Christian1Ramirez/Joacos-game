@@ -22,7 +22,7 @@ body {
  width: 2rem;
  height: 10rem;
  position: absolute;
- bottom: 38rem;
+ bottom: 35rem;
  transform: translateX(-20%);
  border: none;
  background-color: #ccc;
@@ -42,10 +42,11 @@ body {
 }
 
 #fullscreen-btn,
-#reset-btn {
- height: 6rem;
+#restart-btn {
+ height: 5rem;
  min-width: 12rem;
  border-radius: 5px;
+ font-size: 1.5rem;
 }
 
 #correct-msg,
@@ -66,19 +67,20 @@ body {
 
 .input-box {
  display: grid;
- margin: 5px 7vw 5px 1vw;
+ margin: 5px 7vw 5px 5vw;
  border-radius: 10px;
  grid-template-columns: 6fr 1fr;
 }
 
 .buffer {
- margin-top: 5rem;
+ margin-top: 3rem;
 }
 
 #input-bar {
  border-radius: 2rem;
- font-size: 50px;
+ font-size: 40px;
  margin-left: 4rem;
+ height: 5rem;
 }
 
 #speak-btn {
@@ -103,7 +105,7 @@ body {
 
 .key {
  justify-content: center;
- width: 8rem;
+ width: 6rem;
  height: 5rem;
  margin: 3px;
  border: none;
@@ -172,24 +174,24 @@ body {
  }
  
  .pulse {
- text-decoration: blink;
- color: red !important;
- background-color: sandybrown !important;
- animation-name: pulse;
- animation-duration: 1.5s;
- animation-iteration-count: infinite;
- animation-timing-function: ease-in-out;
- animation-direction: alternate;
+  text-decoration: blink;
+  color: red !important;
+  background-color: sandybrown !important;
+  animation-name: pulse;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
  }
  
  #shake {
- animation-name: shake;
- animation-duration: 0.7s;
+  animation-name: shake;
+  animation-duration: 0.7s;
  }
 
  .blast-off {
   animation-name: blast-off;
-  animation-duration: 3.8s;
+  animation-duration: 3.9s;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
@@ -219,13 +221,13 @@ body {
  }
  
  @keyframes blast-off {
-   0% {
-     transform: translateY(0);
-   }
-   100% {
-     transform: translateY(-250%);
-   }
- }
+  0% {
+  transform: translateY(0);
+}
+  100% {
+  transform: translateY(-250%);
+}
+}
  @font-face {
  font-family: "Schoolbell";
  src: url("./Fonts/Schoolbell/Schoolbell-Regular.ttf") format("truetype");

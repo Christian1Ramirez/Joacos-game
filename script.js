@@ -16,9 +16,9 @@ fullScreenBtn.addEventListener("click", function () {
 });
 
 // Restart button
-let resetBtn = document.getElementById("reset-btn");
+let restartBtn = document.getElementById("restart-btn");
 
-resetBtn.addEventListener("click", function () {
+restartBtn.addEventListener("click", function () {
   clearTimeout(hintTimeout);
   removeHint();
   hintTimeout = setTimeout(addHint, 8100);
@@ -50,8 +50,8 @@ let planetArray = [
 let currentImageIndex = 0;
 let currentImage = document.createElement("img");
 currentImage.src = planetArray[currentImageIndex];
-currentImage.style.width = "20rem";
-currentImage.style.height = "20rem";
+currentImage.style.width = "15rem";
+currentImage.style.height = "15rem";
 document.getElementById("planet-array").appendChild(currentImage);
 
 // Letters clicked
