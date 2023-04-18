@@ -1,6 +1,6 @@
-# Project Title
+# Joaco's game
 
-Welcome to my educational and interactive space-themed game! This is Joaco's game, named after my son, Joaquin. Currently, he is 3 years old and I am teaching him how to read. He is my inspiration for building this game since he is deeply fascinated with space and anything related to it. I wanted to take advantage of this interest and use it to teach him how to spell. 
+Welcome to my educational and interactive space-themed game! This is Joaco's game, named after my son, Joaquin. Currently, he is 3 years old and I am teaching him how to read. He is my inspiration for building this game since he is deeply fascinated with space and anything related to it. I wanted to take advantage of this interest and use it to teach him how to spell.
 
 ## Usage
 
