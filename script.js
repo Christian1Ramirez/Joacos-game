@@ -116,7 +116,7 @@ keys.forEach(function (key) {
         key.classList.remove("wrong-key");
       }, 700);
     }
-    hintTimeout = setTimeout(addHint, 8100);
+    hintTimeout = setTimeout(addHint, 20000);
   });
 });
 
