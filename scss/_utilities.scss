@@ -1,0 +1,24 @@
+@mixin boxShadow($inset: false, $level: 'medium') {
+    $shadow: if($inset, 'inset 0 0 5px rgba(255, 255, 255, 0.2)', null);
+    @if $level == 'medium' {
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2), $shadow;
+    } @else if $level == 'high' {
+      box-shadow: 0px 25px 30px rgba(0, 0, 0, 0.5), $shadow;
+    }
+  }
+  
+  @function getShadow($level) {
+    @if $level == 'medium' {
+      @return '0px 5px 10px rgba(0, 0, 0, 0.2)';
+    } @else if $level == 'high' {
+      @return '0px 25px 30px rgba(0, 0, 0, 0.5)';
+    }
+    @error 'Invalid level for shadow: #{$level}';
+  }
+  
+  @mixin textStyling($size, $weight, $color) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+  }
+  

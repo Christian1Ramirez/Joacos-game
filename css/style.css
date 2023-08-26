@@ -1,0 +1,242 @@
+body {
+  margin: 0;
+}
+
+#body {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("../Image_reference/space.png");
+  background-size: cover;
+}
+
+.rocket1,
+.rocket-overlay {
+  height: auto;
+  width: 100%;
+  margin-top: -10rem;
+}
+
+#reservoir {
+  width: 2rem;
+  height: 10rem;
+  position: absolute;
+  bottom: 35rem;
+  transform: translateX(-20%);
+  border: none;
+  background-color: #ccc;
+}
+
+#fusDiv {
+  position: relative;
+  display: grid;
+  align-items: center;
+  width: 120%;
+}
+
+#top-box {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 4rem;
+}
+
+#fullscreen-btn,
+#restart-btn {
+  height: 5rem;
+  min-width: 12rem;
+  border-radius: 5px;
+  font-size: 1.5rem;
+}
+
+#correct-msg,
+#winner-msg {
+  font-weight: bold;
+  display: block;
+  color: white;
+  font-family: "SuperMario256", sans-serif;
+  font-size: 5rem;
+  position: absolute;
+  top: 8%;
+  left: 50.5%;
+}
+
+#planet-array {
+  margin-top: 13rem;
+}
+
+.input-box {
+  display: grid;
+  margin: 5px 7vw 5px 5vw;
+  border-radius: 10px;
+  grid-template-columns: 6fr 1fr;
+}
+
+.buffer {
+  margin-top: 3rem;
+}
+
+#input-bar {
+  border-radius: 2rem;
+  font-size: 40px;
+  margin-left: 4rem;
+  height: 5rem;
+}
+
+#speak-btn {
+  border-radius: 5px;
+  height: 4rem;
+  min-width: 12rem;
+  background-position: center;
+  background-image: url("../Image_reference/speaking.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  box-shadow: 0px 25px 30px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+#keyboard {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.key {
+  justify-content: center;
+  width: 6rem;
+  height: 5rem;
+  margin: 3px;
+  border: none;
+  border-radius: 50px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  color: #fff;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2), inset 0 0 5px rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.correct-key {
+  background-color: #00FF7F !important;
+}
+
+.wrong-key {
+  background-color: #FF0000 !important;
+  color: #FFF;
+  animation-name: shake;
+  animation-duration: 0.7s;
+}
+
+.key:hover {
+  background-color: #00bfff;
+  transform: translateY(-5px);
+  box-shadow: 0px 25px 30px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.key:active {
+  transform: translateY(0px);
+  box-shadow: none;
+}
+
+#fuel {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+button {
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  background-color: #008080;
+  font-weight: bold;
+  font-size: 1.8rem;
+  padding: 1rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 1rem;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2), inset 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+button:hover {
+  background-color: #00bfff;
+  transform: translateY(-5px);
+  box-shadow: 0px 25px 30px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+button:active {
+  transform: translateY(0px);
+  box-shadow: none;
+}
+
+.pulse {
+  text-decoration: blink;
+  color: red !important;
+  background-color: sandybrown !important;
+  animation-name: pulse;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+
+#shake {
+  animation-name: shake;
+  animation-duration: 0.7s;
+}
+
+.blast-off {
+  animation-name: blast-off;
+  animation-duration: 3.9s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-5px, 0, 0);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translate3d(5px, 0, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes blast-off {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-250%);
+  }
+}
+@font-face {
+  font-family: "Schoolbell";
+  src: url("./Fonts/Schoolbell/Schoolbell-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "SuperMario256";
+  src: url("./Fonts/SuperMario256.ttf") format("truetype");
+}
+
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,20 @@
+@mixin btnStyling($radius, $fontSize, $padding) {
+    border: none;
+    border-radius: $radius;
+    font-size: $fontSize;
+    padding: $padding;
+    text-align: center;
+    margin: 1rem;
+    transition: all 0.2s ease-in-out;
+    @include boxShadow();
+    &:hover {
+      background-color: $hover-color;
+      transform: translateY(-5px);
+      box-shadow: getShadow('high');
+    }
+    &:active {
+      transform: translateY(0px);
+      box-shadow: none;
+    }
+  }
+  
